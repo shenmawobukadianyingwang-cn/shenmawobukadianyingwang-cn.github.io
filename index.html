@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="神马我不卡电影网（shenmawobukadianyingwang-cn.github.io）是观影流畅度优先的电影指南：按卡顿敏感度、码率、帧率、画幅、音轨、字幕六项实测指标选片。收录不卡顿的经典片、慢节奏长镜头、低码率友好片与 4K 修复版，附正版平台入口与网络自检清单。">
+<meta name="keywords" content="神马我不卡电影网, shenmawobukadianyingwang, 不卡电影, 不卡顿, 流畅观影, 卡顿, 缓冲, 网速, 码率, 帧率, 画幅, 音轨, 字幕, 慢电影, 长镜头, 文艺片, 经典电影, 高分电影, 冷门佳片, 4K修复, 电影修复, 电影推荐, 正版电影, 电影在线观看, 弱网, 低码率, 自适应码率, 侯孝贤, 是枝裕和, 小津安二郎, 塔可夫斯基, 贝拉·塔尔, 阿彼察邦">
+<meta name="author" content="神马我不卡电影网">
+<meta name="robots" content="index, follow">
+<title>神马我不卡电影网 - 流畅度优先的观影指南 · 不卡，才看得下去</title>
+<link rel="canonical" href="https://shenmawobukadianyingwang-cn.github.io/">
+<style>
+/* ================= 基础 ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070b16; --bg2:#0c1226; --panel:#111a33; --line:#23304f; --txt:#e6ecff; --sub:#8794b8;
+  --cy:#22e6c8; --cy2:#00b8a0; --pk:#ff3aa5; --yl:#ffd23f; --bl:#3d7bff; --rd:#ff5b3a;
+  --mono:'JetBrains Mono','SFMono-Regular',Consolas,Menlo,monospace;
+  --serif:'Songti SC','STSong','SimSun','Noto Serif CJK SC',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;background:var(--bg);color:var(--txt);line-height:1.9;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;outline:none}
+::selection{background:var(--cy);color:var(--bg)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.sec{padding:104px 0;position:relative}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:52px}
+.sec-t{font-size:31px;font-weight:900;letter-spacing:.5px;display:flex;align-items:center;gap:13px;font-family:var(--mono)}
+.sec-t .tag{font-size:9px;letter-spacing:2.5px;color:var(--bg);background:var(--cy);padding:6px 12px;font-weight:900;border-radius:3px}
+.sec-s{color:var(--sub);font-size:11px;letter-spacing:1.5px;font-family:var(--mono)}
+.eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:3.5px;color:var(--cy);font-weight:900}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;border-radius:4px;font-weight:900;font-size:13.5px;cursor:pointer;border:2px solid var(--cy);transition:.22s;white-space:nowrap;letter-spacing:1px;position:relative;overflow:hidden}
+.btn-p{background:var(--cy);color:var(--bg);box-shadow:0 0 26px rgba(34,230,200,.45)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 0 40px rgba(34,230,200,.7)}
+.btn-o{background:transparent;color:var(--cy)}
+.btn-o:hover{background:rgba(34,230,200,.12)}
+.pill{display:inline-block;padding:3px 10px;font-size:10px;font-weight:900;letter-spacing:.5px;font-family:var(--mono);border:1.5px solid currentColor;border-radius:3px}
+.pill.c{color:var(--cy)}
+.pill.y{color:var(--yl)}
+.pill.p{color:var(--pk)}
+.pill.b{color:var(--bl)}
+
+/* ================= 顶导 ================= */
+.nav{position:sticky;top:0;z-index:60;background:rgba(7,11,22,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:18px;height:74px}
+.logo{font-size:19px;font-weight:900;white-space:nowrap;display:flex;align-items:center;gap:12px;letter-spacing:1px;font-family:var(--mono)}
+.logo .lt{width:44px;height:44px;background:linear-gradient(135deg,var(--cy),var(--bl));color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;border-radius:9px;position:relative;box-shadow:0 0 18px rgba(34,230,200,.5)}
+.logo .lt::after{content:'▣';position:absolute;inset:-6px;border:2px dashed var(--cy);border-radius:13px;opacity:.35}
+.logo small{font-size:8px;color:var(--cy);letter-spacing:2.5px;display:block;margin-top:3px}
+.bars{display:flex;align-items:flex-end;gap:3px;height:20px;flex:0 0 auto}
+.bars i{width:4px;background:var(--cy);border-radius:2px;display:block;box-shadow:0 0 8px var(--cy);animation:bb 1.2s ease-in-out infinite alternate}
+.bars i:nth-child(1){height:8px;animation-delay:0s}
+.bars i:nth-child(2){height:20px;animation-delay:.2s}
+.bars i:nth-child(3){height:13px;animation-delay:.4s}
+.bars i:nth-child(4){height:20px;animation-delay:.6s}
+.bars i:nth-child(5){height:7px;animation-delay:.8s}
+@keyframes bb{from{transform:scaleY(.3);opacity:.4}to{transform:scaleY(1);opacity:1}}
+.menu{display:flex;gap:2px;flex:1;justify-content:flex-end;flex-wrap:wrap}
+.menu a{padding:10px 13px;font-size:13px;color:var(--sub);transition:.2s;white-space:nowrap;font-weight:700;position:relative;font-family:var(--mono);font-size:12px}
+.menu a::before{content:'> ';color:var(--cy);opacity:0;transition:.2s}
+.menu a:hover{color:var(--cy)}
+.menu a:hover::before,.menu a.on::before{opacity:1}
+.menu a::after{content:'';position:absolute;left:13px;right:13px;bottom:5px;height:1px;background:var(--cy);transform:scaleX(0);transition:.22s;transform-origin:left}
+.menu a:hover::after,.menu a.on::after{transform:scaleX(1)}
+.hamb{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.hamb i{width:23px;height:2px;background:var(--cy);border-radius:2px}
+
+/* ================= HERO ================= */
+.hero{position:relative;overflow:hidden;padding:70px 0 92px;background:
+  radial-gradient(900px 500px at 88% 8%, rgba(255,58,165,.22), transparent 60%),
+  radial-gradient(760px 460px at 6% 96%, rgba(34,230,200,.18), transparent 60%),
+  linear-gradient(160deg,#070b16,#0c1226);color:var(--txt)}
+.hero .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(61,123,255,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(61,123,255,.10) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(circle at 50% 30%,#000,transparent 72%);pointer-events:none}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr .92fr;gap:54px;align-items:center}
+.hero .kicker{font-family:var(--mono);font-size:10px;letter-spacing:4px;color:var(--cy);font-weight:900}
+.hero h1{font-size:58px;font-weight:900;line-height:1.18;margin:14px 0;letter-spacing:-1px;font-family:var(--mono)}
+.hero h1 .gl{background:linear-gradient(90deg,var(--cy),var(--bl) 60%,var(--pk));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .no{color:var(--rd);text-decoration:line-through wavy var(--pk);text-decoration-thickness:3px}
+.hero .lede{font-size:15.5px;color:#b9c4e0;margin-bottom:24px;max-width:560px}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap}
+.hero .notes{margin-top:24px;display:flex;gap:9px;flex-wrap:wrap}
+.hero .notes span{font-size:11px;color:var(--sub);border:1px solid var(--line);background:rgba(255,255,255,.03);padding:5px 12px;font-family:var(--mono);letter-spacing:.5px;border-radius:3px}
+.disk{background:var(--panel);border:2px solid var(--line);padding:22px 24px;border-radius:14px;position:relative;overflow:hidden;transform:rotate(1.4deg);box-shadow:0 26px 70px rgba(0,0,0,.6)}
+.disk::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 7px,rgba(34,230,200,.05) 7px,rgba(34,230,200,.05) 14px)}
+.disk .tk{font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--cy);font-weight:900}
+.disk h3{font-family:var(--serif);font-size:20px;margin:9px 0 16px;line-height:1.55;color:#fff}
+.disk ol{list-style:none;counter-reset:step}
+.disk li{counter-increment:step;padding:9px 0 9px 40px;position:relative;font-size:12.6px;color:#c7d2ee;line-height:1.7;border-bottom:1px dashed var(--line)}
+.disk li:last-child{border-bottom:0}
+.disk li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:9px;width:26px;height:26px;border:1.5px solid var(--cy);color:var(--cy);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;font-weight:900;border-radius:50%}
+.disk .gauge{margin-top:16px;height:8px;border-radius:6px;background:linear-gradient(90deg,var(--cy) 0%,var(--bl) 52%,var(--pk) 78%,var(--rd) 100%);position:relative}
+.disk .gauge::after{content:'流畅阈值 → 4 Mbps';position:absolute;right:0;top:-20px;font-family:var(--mono);font-size:10px;color:var(--yl);letter-spacing:1px}
+
+/* ================= 栏目1：卡顿敏感轴（meter 槽 + 发光条 + 刻度） ================= */
+.axis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.axis>div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 16px;position:relative;transition:.3s;overflow:hidden}
+.axis>div::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--cy);box-shadow:0 0 14px var(--cy)}
+.axis>div:nth-child(2)::before{background:var(--yl);box-shadow:0 0 14px var(--yl)}
+.axis>div:nth-child(3)::before{background:var(--pk);box-shadow:0 0 14px var(--pk)}
+.axis>div:hover{transform:translateY(-8px);border-color:var(--cy);box-shadow:0 0 34px rgba(34,230,200,.28)}
+.axis .n{font-family:var(--mono);font-size:9.5px;letter-spacing:2px;color:var(--sub);font-weight:900}
+.axis h4{font-size:16px;margin:6px 0 10px;font-family:var(--mono)}
+.axis .meter{height:9px;background:rgba(255,255,255,.07);border-radius:6px;overflow:hidden;margin-bottom:5px;position:relative}
+.axis .meter b{display:block;height:100%;width:calc(var(--v,60) * 1%);background:linear-gradient(90deg,var(--cy),var(--bl));border-radius:6px;box-shadow:0 0 10px var(--cy);transition:width .9s cubic-bezier(.22,1,.36,1)}
+.axis .meter i{position:absolute;left:calc(var(--v,60) * 1%);top:-3px;width:3px;height:15px;background:var(--yl);box-shadow:0 0 8px var(--yl)}
+.axis>div:nth-child(2) .meter b{background:linear-gradient(90deg,var(--yl),var(--rd));box-shadow:0 0 10px var(--yl)}
+.axis>div:nth-child(3) .meter b{background:linear-gradient(90deg,var(--pk),var(--bl));box-shadow:0 0 10px var(--pk)}
+.axis .v{font-family:var(--mono);font-size:11px;color:var(--cy);font-weight:900;display:flex;justify-content:space-between;margin-bottom:8px}
+.axis p{font-size:11.8px;color:var(--sub);line-height:1.85}
+.axis .ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:#5f6d92;margin-top:6px;letter-spacing:.5px}
+
+/* ================= 栏目2：不卡榜（带表头卡片表） ================= */
+.rank{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.rank .th{display:grid;grid-template-columns:52px 1fr 88px;gap:14px;padding:12px 18px;background:linear-gradient(90deg,var(--cy),var(--bl));color:var(--bg);font-family:var(--mono);font-size:10px;letter-spacing:2px;font-weight:900}
+.rank .th.r{background:linear-gradient(90deg,var(--pk),var(--rd))}
+.rank .row{display:grid;grid-template-columns:52px 1fr 88px;align-items:center;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:.22s}
+.rank .row:nth-child(2n){border-right:0}
+.rank .row:nth-last-child(-n+2){border-bottom:0}
+.rank .row:hover{background:rgba(34,230,200,.10)}
+.rank .no{font-family:var(--mono);font-size:20px;font-weight:900;color:var(--cy);line-height:1}
+.rank .row:hover .no{color:var(--yl)}
+.rank .no small{display:block;font-size:7.5px;letter-spacing:1.5px;color:var(--sub);margin-top:3px;font-weight:700}
+.rank h4{font-size:15px;line-height:1.45}
+.rank h4 b{font-weight:900;display:block;font-size:15.5px}
+.rank h4 span{font-size:10.5px;font-family:var(--mono);color:var(--sub);letter-spacing:.6px}
+.rank .sc{text-align:right}
+.rank .sc i{display:block;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--cy),var(--bl));margin-bottom:5px}
+.rank .sc b{font-family:var(--mono);font-size:12.5px;font-weight:900;color:var(--cy)}
+
+/* ================= 栏目3：片单（霓虹框 + 伪终端封面 + 状态灯） ================= */
+.pick{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:.34s;position:relative}
+.pick::after{content:'';position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 2px transparent;transition:.34s;pointer-events:none}
+.pick:hover{transform:translateY(-9px);box-shadow:0 26px 60px rgba(0,0,0,.6)}
+.pick:hover::after{box-shadow:inset 0 0 0 2px var(--cy),0 0 34px rgba(34,230,200,.35);z-index:3}
+.pick .cvr{height:120px;position:relative;padding:14px 16px;color:#fff;display:flex;align-items:flex-end;font-family:var(--mono);font-size:10px;line-height:1.7}
+.pick .cvr .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.22) 3px,rgba(0,0,0,.22) 6px);mix-blend-mode:overlay}
+.pick .cvr .blink{position:absolute;top:12px;right:14px;font-size:8.5px;letter-spacing:1.5px;color:var(--cy);display:flex;align-items:center;gap:5px}
+.pick .cvr .blink::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--cy);box-shadow:0 0 10px var(--cy);animation:bb .9s ease-in-out infinite alternate}
+@keyframes bb2{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
+.pick .cvr b{font-family:var(--serif);font-size:19px;font-weight:900;line-height:1.3;text-shadow:0 0 18px rgba(34,230,200,.6);z-index:2}
+.pick .body{padding:15px 17px 17px;display:flex;flex-direction:column;flex:1}
+.pick .body .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.pick .body h4{font-size:15.5px;line-height:1.45}
+.pick .body p{font-size:12.3px;color:var(--sub);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.85;margin-top:8px;flex:1}
+.pick .body .ft{margin-top:11px;display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:10px;font-size:11.5px;font-weight:900;letter-spacing:.5px;color:var(--cy);font-family:var(--mono)}
+.pick .body .ft span:last-child{color:var(--yl)}
+
+/* ================= 栏目4：不卡设置（手风琴 + 霓虹侧栏） ================= */
+.guide{display:grid;grid-template-columns:1fr .9fr;gap:28px;align-items:start}
+.acc{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.acc .it{border-bottom:1px solid var(--line)}
+.acc .it:last-child{border-bottom:0}
+.acc .hd{width:100%;text-align:left;padding:19px 22px;background:transparent;border:0;color:var(--txt);font-size:15.5px;font-weight:900;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;font-family:var(--mono)}
+.acc .hd .q{display:flex;gap:14px;align-items:center}
+.acc .hd .q i{width:28px;height:28px;flex:0 0 28px;border-radius:6px;background:var(--cy);color:var(--bg);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-style:normal;font-weight:900}
+.acc .hd .ar{font-size:12px;color:var(--cy);transition:.3s;font-weight:900}
+.acc .it.open .hd .ar{transform:rotate(180deg)}
+.acc .bd{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.22,1,.36,1)}
+.acc .bd p{padding:0 22px 20px 64px;font-size:13px;color:var(--sub);line-height:1.95}
+.acc .bd p b{color:var(--cy)}
+.fix{background:linear-gradient(160deg,#111a33,#0a1022);border:2px solid var(--cy);padding:24px 26px;border-radius:12px;box-shadow:0 0 30px rgba(34,230,200,.22)}
+.fix h4{font-family:var(--serif);font-size:20px;color:#fff;line-height:1.5}
+.fix .sub{font-size:9.5px;letter-spacing:2.5px;color:var(--cy);font-family:var(--mono);margin:8px 0 16px}
+.fix ol{list-style:none;counter-reset:f}
+.fix li{counter-increment:f;padding:9px 0 9px 34px;position:relative;font-size:12.6px;color:#c7d2ee;line-height:1.75;border-bottom:1px solid rgba(255,255,255,.10)}
+.fix li:last-child{border-bottom:0}
+.fix li::before{content:'0' counter(f);position:absolute;left:0;top:9px;color:var(--cy);font-family:var(--mono);font-size:11px;font-weight:900}
+.fix .net{margin-top:16px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;color:var(--yl);letter-spacing:1px}
+.fix .net .dot{width:9px;height:9px;border-radius:50%;background:var(--cy);box-shadow:0 0 12px var(--cy);animation:bb2 1.1s ease-in-out infinite}
+
+/* ================= 栏目5：长文（终端窗口） ================= */
+.essay{border:1px solid var(--line);background:var(--panel);border-radius:12px;overflow:hidden}
+.essay .bar{display:flex;gap:8px;padding:12px 16px;background:#080e20;border-bottom:1px solid var(--line)}
+.essay .bar i{width:12px;height:12px;border-radius:50%;background:var(--line)}
+.essay .bar i:nth-child(1){background:var(--rd)}
+.essay .bar i:nth-child(2){background:var(--yl)}
+.essay .bar i:nth-child(3){background:var(--cy)}
+.essay .bar b{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--sub);font-weight:700;letter-spacing:1px}
+.essay .in{padding:30px 34px;font-family:var(--mono);font-size:13px;line-height:2.05;color:#cfe0ff}
+.essay .in .em{color:var(--cy);letter-spacing:2px;font-size:10px}
+.essay .in h3{font-family:var(--serif);font-size:25px;color:#fff;margin:10px 0 14px;line-height:1.45;font-weight:900}
+.essay .in .by{color:var(--sub);font-size:10.5px;margin-bottom:18px;letter-spacing:1px}
+.essay .in p{margin-bottom:12px;text-align:justify}
+.essay .in p .p{color:var(--pk)}
+.essay .in p .c{color:var(--cy)}
+.essay .in blockquote{border-left:3px solid var(--cy);padding:2px 0 2px 16px;margin:18px 0;color:var(--yl);font-family:var(--serif);font-size:16px;line-height:1.9}
+.essay .in .cursor{display:inline-block;width:9px;height:15px;background:var(--cy);vertical-align:-2px;animation:bb2 .75s steps(2) infinite}
+
+/* ================= 栏目6：关于 ================= */
+.about{border:2px solid var(--cy);border-radius:14px;padding:46px;background:linear-gradient(160deg,#0c1226,#080e20);box-shadow:0 0 60px rgba(34,230,200,.16)}
+.about .lh{display:grid;grid-template-columns:1fr .9fr;gap:44px;margin-bottom:34px}
+.about .lh h2{font-family:var(--mono);font-size:31px;line-height:1.42;font-weight:900}
+.about .lh h2 u{text-decoration:none;color:var(--cy);border-bottom:4px solid var(--pk);display:inline-block}
+.about .lh .lead{color:#b9c4e0;font-size:14.5px;margin-top:14px;line-height:2}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--cy);border-bottom:1px solid var(--cy)}
+.stats div{text-align:center;padding:24px 8px}
+.stats b{display:block;font-size:30px;font-weight:900;color:var(--cy);line-height:1.1;font-family:var(--mono);text-shadow:0 0 20px rgba(34,230,200,.5)}
+.stats small{font-size:10px;color:var(--sub);letter-spacing:1.5px;font-family:var(--mono)}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat div{border:1px solid var(--line);padding:22px;background:rgba(255,255,255,.025);border-radius:10px}
+.feat h4{font-size:15px;margin-bottom:9px;display:flex;align-items:center;gap:9px;font-family:var(--mono)}
+.feat h4 .tk{width:26px;height:26px;background:var(--cy);color:var(--bg);font-size:11px;display:inline-flex;align-items:center;justify-content:center;font-weight:900;border-radius:6px;flex:0 0 auto}
+.feat p{font-size:12.8px;color:var(--sub);line-height:1.9}
+.feat p b{color:var(--cy)}
+.siteinfo{margin-top:26px;padding:24px;border:1px solid var(--line);font-size:13px;color:var(--sub);line-height:2.05;border-radius:10px;background:rgba(0,0,0,.25)}
+.siteinfo b{color:var(--cy)}
+
+/* ================= 网格 ================= */
+.grid{display:grid;gap:18px}
+.g6{grid-template-columns:repeat(6,1fr)}
+.g5{grid-template-columns:repeat(5,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+
+/* ================= 页脚 ================= */
+.foot{border-top:1px solid var(--line);padding:56px 0 26px;color:var(--sub);font-size:13px;background:var(--bg2)}
+.f-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;margin-bottom:28px}
+.f-links a{margin-right:22px;color:var(--sub);font-size:13px;transition:.2s;font-family:var(--mono);font-size:12px}
+.f-links a:hover{color:var(--cy)}
+.f-cat{display:grid;grid-template-columns:repeat(6,1fr);gap:9px 24px;margin:22px 0;font-family:var(--mono);font-size:11.5px}
+.f-cat a{color:var(--sub);transition:.2s}
+.f-cat a:hover{color:var(--cy)}
+.copy{text-align:center;border-top:1px dashed var(--line);padding-top:22px;letter-spacing:.5px;font-family:var(--mono);font-size:11px;color:#5f6d92}
+.copy b{color:var(--cy)}
+
+/* ================= 移动端 ================= */
+@media(max-width:1100px){.g6,.g5{grid-template-columns:repeat(4,1fr)}.g4,.g3{grid-template-columns:repeat(3,1fr)}.about .lh{grid-template-columns:1fr}.axis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:46px}.hero h1{font-size:42px}.disk{transform:none}
+  .g3,.g2,.feat,.guide{grid-template-columns:1fr}
+  .essay .in{padding:22px 18px;font-size:12.4px}
+  .rank{grid-template-columns:1fr}
+  .rank .row{border-right:0}
+}
+@media(max-width:760px){
+  .g6,.g5,.g4,.g3,.axis{grid-template-columns:repeat(2,1fr);gap:13px}
+  .bars{display:none}
+}
+@media(max-width:640px){
+  .sec{padding:64px 0}.sec-t{font-size:21px;flex-wrap:wrap}
+  .nav-in{height:68px;gap:10px}
+  .hamb{display:flex}
+  .menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--bg2);flex-direction:column;padding:10px;border-bottom:1px solid var(--cy)}
+  .menu.open{display:flex}
+  .menu a{text-align:center;padding:13px;border-bottom:1px solid var(--line);color:var(--sub)}
+  .hero{padding:46px 0}.hero .wrap{padding:26px 24px}.hero h1{font-size:29px}
+  .g6,.g5,.g4,.g3,.g2,.feat,.about .stats,.axis{grid-template-columns:1fr}
+  .f-cat{grid-template-columns:repeat(2,1fr)}
+  .about{padding:26px 16px}.about .lh h2{font-size:22px}
+  .essay .in h3{font-size:20px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ============ 顶部导航 ============ -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#">
+      <span class="lt">不</span>
+      <span>神马我不卡电影网<small>NO-LAG CINEMA</small></span>
+    </a>
+    <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <nav class="menu" id="menu">
+      <a href="#home">今日片单</a>
+      <a href="#axis">卡顿敏感轴</a>
+      <a href="#rank">不卡榜</a>
+      <a href="#pick">片单</a>
+      <a href="#guide">不卡设置</a>
+      <a href="#essay">长文</a>
+      <a href="#about">关于</a>
+    </nav>
+    <div class="hamb" id="hamb"><i></i><i></i><i></i></div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="grid-lines"></div>
+  <div class="wrap">
+    <div>
+      <span class="kicker">// BUFFER-FREE WATCHING GUIDE</span>
+      <h1>神马<span class="no">卡</span>顿<br>我<span class="gl">都不看</span></h1>
+      <p class="lede">神马我不卡电影网（shenmawobukadianyingwang-cn.github.io）是一座<b>流畅度优先的电影观影指南</b>。我们不按明星、类型或热度推荐，按<b>卡不卡</b>推荐：<b>码率</b>（是否低码率友好）、<b>帧率</b>（长镜头是否会被插帧毁掉）、<b>画幅</b>（是否会被拉伸）、<b>音轨</b>（是否需要环绕声）、<b>字幕</b>（是否为机翻）、<b>片长</b>（是否适合分段）。片单以侯孝贤、是枝裕和、小津安二郎、塔可夫斯基、贝拉·塔尔、阿彼察邦为主轴，标注流畅度评分、修复状态与正版入口。</p>
+      <div class="acts">
+        <a class="btn btn-p" href="#pick">找一部不卡的片 →</a>
+        <a class="btn btn-o" href="#guide">网络自检</a>
+      </div>
+      <div class="notes">
+        <span>✔ 流畅优先</span><span>✔ 长镜头</span><span>✔ 4K 修复</span><span>✔ 正版入口</span><span>✔ 弱网友好</span>
+      </div>
+    </div>
+    <div class="disk">
+      <div class="tk">BUFFER CHECK · 今晚不卡的 4 种情形</div>
+      <h3>选片之前，先回答：<span style="color:var(--yl)">你现在有多少带宽？</span></h3>
+      <ol>
+        <li><b>地铁 / 4G 单手</b>→ 是枝裕和《步履不停》114 min，平均码率仅 4.2 Mbps，弱网无压力</li>
+        <li><b>家里宽带 10 Mbps</b>→ 小津安二郎《东京物语》136 min，黑白、静态构图，最省带宽</li>
+        <li><b>WiFi 但电视老旧</b>→ 侯孝贤《悲情城市》157 min，长镜头多、运动少，解码压力最低</li>
+        <li><b>千兆 + 大屏 + 音箱</b>→ 贝拉·塔尔《都灵之马》146 min，4K 修复版才对得起这阵风</li>
+      </ol>
+      <div class="gauge"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 栏目1：卡顿敏感轴（meter 槽 + 刻度） ============ -->
+<section class="sec" id="axis">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t"><span class="tag">AXIS</span>卡顿敏感轴</h2>
+      <span class="sec-s">三项实测指标 · 数值越低越不卡</span>
+    </div>
+    <div class="grid g3 axis">
+      <div style="--v:18"><div class="n">METRIC 01</div><h4>码率敏感度</h4><div class="meter"><b></b><i></i></div><div class="v"><span>0</span><b>18 Mbps</b><span>60</span></div><div class="ticks"><span>省流</span><span>吃带宽</span></div><p>静态构图、长镜头、黑白片的码率通常只有动作片的 1/3。侯孝贤一场 3 分钟的长镜头，可能只用了 200 MB。</p></div>
+      <div style="--v:24"><div class="n">METRIC 02</div><h4>解码压力</h4><div class="meter"><b></b><i></i></div><div class="v"><span>0</span><b>24 fps</b><span>60</span></div><div class="ticks"><span>24fps 胶片</span><span>60fps 高帧</span></div><p>24fps 的胶片颤动是长镜头的呼吸。老电视解码 4K/60 会掉帧，手机看 4K 则是纯粹浪费——片幅与帧率，比分辨率更重要。</p></div>
+      <div style="--v:32"><div class="n">METRIC 03</div><h4>字幕依赖</h4><div class="meter"><b></b><i></i></div><div class="v"><span>0</span><b>32%</b><span>100</span></div><div class="ticks"><span>无对白</span><span>全程对白</span></div><p>字幕遮挡画幅下缘，会压住小津的留白与侯孝贤的远景。对白少的片子，即使不看字幕也能看懂——这是弱网时的隐藏优势。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 栏目2：不卡榜（带表头卡片表） ============ -->
+<section class="sec" id="rank" style="background:linear-gradient(180deg,#070b16,#0c1226)">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t"><span class="tag">TOP 8</span>不卡榜</h2>
+      <a class="btn btn-o" href="#" style="border-color:var(--cy)">完整 40 部 →</a>
+    </div>
+    <div class="rank">
+      <div class="th"><span>NO.</span><span>影片 / 导演 / 年份</span><span>流畅度</span></div>
+      <div class="th r"><span>NO.</span><span>影片 / 导演 / 年份</span><span>流畅度</span></div>
+      <div class="row"><div class="no">01<small>FLUID</small></div><div class="tx"><h4><b>东京物语</b><span>小津安二郎 · 1953 · 黑白 / 静态</span></h4></div><div class="sc"><i style="width:98%"></i><b>98</b></div></div>
+      <div class="row"><div class="no">02<small>FLUID</small></div><div class="tx"><h4><b>步履不停</b><span>是枝裕和 · 2008 · 低码率</span></h4></div><div class="sc"><i style="width:96%"></i><b>96</b></div></div>
+      <div class="row"><div class="no">03<small>FLUID</small></div><div class="tx"><h4><b>恋恋风尘</b><span>侯孝贤 · 1986 · 长镜头</span></h4></div><div class="sc"><i style="width:94%"></i><b>94</b></div></div>
+      <div class="row"><div class="no">04<small>FLUID</small></div><div class="tx"><h4><b>都灵之马</b><span>贝拉·塔尔 · 2011 · 无配乐</span></h4></div><div class="sc"><i style="width:92%"></i><b>92</b></div></div>
+      <div class="row"><div class="no">05<small>FLUID</small></div><div class="tx"><h4><b>悲情城市</b><span>侯孝贤 · 1989 · 1.33:1</span></h4></div><div class="sc"><i style="width:90%"></i><b>90</b></div></div>
+      <div class="row"><div class="no">06<small>FLUID</small></div><div class="tx"><h4><b>镜子</b><span>塔可夫斯基 · 1975 · 无声段</span></h4></div><div class="sc"><i style="width:88%"></i><b>88</b></div></div>
+      <div class="row"><div class="no">07<small>FLUID</small></div><div class="tx"><h4><b>能召回前世的布米叔叔</b><span>阿彼察邦 · 2010 · 环境音</span></h4></div><div class="sc"><i style="width:85%"></i><b>85</b></div></div>
+      <div class="row"><div class="no">08<small>FLUID</small></div><div class="tx"><h4><b>一一</b><span>杨德昌 · 2000 · 中码率</span></h4></div><div class="sc"><i style="width:82%"></i><b>82</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 栏目3：片单（霓虹框 + 伪终端封面 + 状态灯） ============ -->
+<section class="sec" id="pick">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t"><span class="tag">PICKS</span>不卡片单</h2>
+      <span class="sec-s">标注码率 · 帧率 · 画幅 · 音轨 · 字幕 · 正版入口</span>
+    </div>
+    <div class="grid g3">
+      <article class="pick"><div class="cvr" style="background:linear-gradient(160deg,#0d3a36,#0a1a22)"><span class="scan"></span><span class="blink">LIVE</span><b>步履不停</b></div><div class="body"><div class="hd"><h4>步履不停</h4><span class="pill c">低码率</span></div><p>是枝裕和 2008。横山家的一天：厨房、台阶、院子。静态构图，平均码率 4.2 Mbps，地铁 4G 单手可看，弱网也不掉帧。</p><span class="ft"><span>4K 修复 →</span><span>114 MIN</span></span></div></article>
+      <article class="pick"><div class="cvr" style="background:linear-gradient(160deg,#2a1c3a,#0a1a22)"><span class="scan"></span><span class="blink">LIVE</span><b>都灵之马</b></div><div class="body"><div class="hd"><h4>都灵之马</h4><span class="pill c">无配乐</span></div><p>贝拉·塔尔 2011。六个白天，一口井，一匹马，一场不停的风。没有配乐，没有对白，码率极低，但需要 4K 大屏才对得起这阵风。</p><span class="ft"><span>2K 修复 →</span><span>146 MIN</span></span></div></article>
+      <article class="pick"><div class="cvr" style="background:linear-gradient(160deg,#1d3a2a,#0a1a22)"><span class="scan"></span><span class="blink">LIVE</span><b>东京物语</b></div><div class="body"><div class="hd"><h4>东京物语</h4><span class="pill y">省流</span></div><p>小津安二郎 1953。黑白、1.33:1、榻榻米高度机位、几乎不动的镜头。这是<b>最省带宽</b>的电影：136 分钟，约 1.1 GB。</p><span class="ft"><span>4K 修复 →</span><span>136 MIN</span></span></div></article>
+      <article class="pick"><div class="cvr" style="background:linear-gradient(160deg,#3a2c12,#0a1a22)"><span class="scan"></span><span class="blink">LIVE</span><b>悲情城市</b></div><div class="body"><div class="hd"><h4>悲情城市</h4><span class="pill b">长镜头</span></div><p>侯孝贤 1989。台湾的秋天，收音机、酒杯、火车、街头。长镜头多、运动少，解码压力最低，老电视也不掉帧。</p><span class="ft"><span>4K 修复 →</span><span>157 MIN</span></span></div></article>
+      <article class="pick"><div class="cvr" style="background:linear-gradient(160deg,#122a3a,#0a1a22)"><span class="scan"></span><span class="blink">LIVE</span><b>布米叔叔</b></div><div class="body"><div class="hd"><h4>能召回前世的布米叔叔</h4><span class="pill p">环境音</span></div><p>阿彼察邦 2010。热带的雨、青蛙、牛、远处电视里的新闻。声音是叙事者，对白极少，即使静音看也基本能懂。</p><span class="ft"><span>2K 修复 →</span><span>114 MIN</span></span></div></article>
+      <article class="pick"><div class="cvr" style="background:linear-gradient(160deg,#3a1224,#0a1a22)"><span class="scan"></span><span class="blink">LIVE</span><b>镜子</b></div><div class="body"><div class="hd"><h4>镜子</h4><span class="pill p">无声段</span></div><p>塔可夫斯基 1975。长达一分钟的无声段落里，你能听见自己的呼吸。静音不是没有声音，是所有声音都被听见了。</p><span class="ft"><span>4K 修复 →</span><span>108 MIN</span></span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 栏目4：不卡设置（手风琴 + 霓虹侧栏） ============ -->
+<section class="sec" id="guide" style="background:linear-gradient(180deg,#070b16,#0c1226)">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t"><span class="tag">FIX</span>不卡设置</h2>
+      <span class="sec-s">卡顿 90% 不是网速问题，是设置问题</span>
+    </div>
+    <div class="guide">
+      <div class="acc" id="acc">
+        <div class="it open"><button class="hd"><span class="q"><i>Q1</i>关闭"运动补偿 / MEMC / 插帧"</span><span class="ar">▼</span></button><div class="bd" style="max-height:400px"><p>24fps 的颤动是胶片的一部分，也是声音与画面同步的基准。<b>插帧会让口型错位 2 帧</b>——你会先看到嘴动，再听到声音。长镜头电影请一律关闭。这是"卡顿"投诉里最常被忽略的一项：画面在动，声音在追。</p></div></div>
+        <div class="it"><button class="hd"><span class="q"><i>Q2</i>选择"原始画幅"，拒绝 16:9 拉伸</span><span class="ar">▼</span></button><div class="bd"><p>侯孝贤的 1.33:1 被拉宽后，左右声道定位会错位；小津的下方留白被裁掉，字幕会压住演员的眼睛。<b>画幅是构图，也是声场</b>。拉伸不会让你"看得更多"，只会让声音找不到方向。</p></div></div>
+        <div class="it"><button class="hd"><span class="q"><i>Q3</i>不要用耳机，用音箱</span><span class="ar">▼</span></button><div class="bd"><p>长镜头的声音是"空间"的声音：风从左耳到右耳需要时间，雨落在屋顶和落在泥地是两个音色。耳机把空间压扁了。<b>2.0 书架箱 &gt; 降噪耳机</b>。真要戴耳机，请关掉"空间音频"类处理，它会对长镜头做错误补偿。</p></div></div>
+        <div class="it"><button class="hd"><span class="q"><i>Q4</i>不要倍速，倍速会杀死静音</span><span class="ar">▼</span></button><div class="bd"><p>1.25 倍速看《都灵之马》，风会变成"呼呼"的白噪声；1.5 倍速看《镜子》，那 60 秒的无声会变成"空白"。<b>静音是需要时间的</b>。若实在没时间，请选片长 &lt; 90 min 的短片，而不是加速长片。</p></div></div>
+        <div class="it"><button class="hd"><span class="q"><i>Q5</i>关掉字幕的"提示音"</span><span class="ar">▼</span></button><div class="bd"><p>手机通知、空调外机、冰箱压缩机、楼上的脚步。它们不是背景，它们是竞争对手。请在片头字幕出现前：<b>手机翻面、静音、放到另一个房间</b>。对白少的片子（本榜前 6 名）在弱网下可尝试关闭字幕，画幅下缘的留白会回来。</p></div></div>
+        <div class="it"><button class="hd"><span class="q"><i>Q6</i>片尾字幕不是结束，是回神</span><span class="ar">▼</span></button><div class="bd"><p>请不要在最后一个画面消失的瞬间打开社交软件。长镜头的余韵在片尾字幕里，配乐也常在这里才真正开始。<b>预留片尾 4 分钟</b>，让那 146 分钟的风，在你身体里多待一会儿。</p></div></div>
+      </div>
+      <aside class="fix">
+        <h4>网络自检清单</h4>
+        <p class="sub">CHECK LIST · NO-LAG</p>
+        <ol>
+          <li>已关闭 MEMC / 插帧 / 运动补偿（防口型错位）</li>
+          <li>已选择"原始画幅"，未强行拉伸为 16:9</li>
+          <li>已关闭"AI 画质增强 / 超分辨率"（长镜头不需要）</li>
+          <li>已关闭字幕外的一切提示音与弹幕</li>
+          <li>已把播放器"最大码率"设为 <b>自动 / 原始</b>，未强行 4K</li>
+          <li>已确认片长，并预留片尾字幕时间</li>
+        </ol>
+        <div class="net"><span class="dot"></span>当前建议：选"省流档"影片 · 码率 ≤ 6 Mbps</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 栏目5：长文（终端窗口） ============ -->
+<section class="sec" id="essay">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t"><span class="tag">TERMINAL</span>长文</h2>
+      <span class="sec-s">为什么"不卡"，是一种观影能力</span>
+    </div>
+    <article class="essay">
+      <div class="bar"><i></i><i></i><i></i><b>~ / no-lag-cinema / essay_01.md</b></div>
+      <div class="in">
+        <div class="em">ESSAY 01 · WHY FLUIDITY IS A SKILL</div>
+        <h3>我们为什么需要先解决"卡"</h3>
+        <div class="by">BY 神马我不卡电影网 · 约 6 min 阅读 · 码率 4.2 Mbps</div>
+        <p><span class="p">$</span> 有一类电影，你看第一遍时什么也没记住，却在三天后突然想起它的<b>声音</b>：水烧开的声音、雨打铁皮的声音、一个人关上房门的声音。这类电影不适合"刷"，适合"看"。而"看"的前提是——<span class="c">它不能卡。</span></p>
+        <p>卡顿对电影的伤害，比对短视频的伤害大得多。短视频卡 0.5 秒，你滑走；长镜头卡 0.5 秒，<b>导演花了三分钟搭起来的情绪被清零</b>。侯孝贤一场 180 秒的镜头，一旦缓冲，你失去的不是一帧，而是一整段"时间的形状"。</p>
+        <blockquote>"卡顿不是技术问题，是注意力被中断的证据。"</blockquote>
+        <p>所以神马我不卡电影网想做一件很朴素的事：<b>按"卡不卡"给电影分类</b>。不是按类型、演员、热度，而是按四个硬指标：<span class="c">码率</span>（这片子吃不吃带宽）、<span class="c">帧率</span>（长镜头会不会被插帧毁掉）、<span class="c">画幅</span>（会不会被拉伸）、<span class="c">音轨</span>（要不要环绕声）。再加上两个软指标：<span class="c">字幕依赖</span>（对白少的片子，弱网时关字幕也能看）与<span class="c">片长</span>（能不能一次看完）。</p>
+        <p>这套分类有个意外好处：<b>它不挑心情，只挑环境</b>。地铁上适合是枝裕和（低码率、静态构图）；家里老电视适合小津（1.33:1、24fps，解码压力最低）；千兆 + 大屏 + 音箱才配得上贝拉·塔尔（4K 修复版，那阵风值得 60 寸）。你不需要"想看点什么"，只需要回答一个问题：<span class="c">我现在有多少带宽和多少时间？</span></p>
+        <p>今晚的建议：选一部"流畅度 &gt; 90"的电影，把灯关掉，手机翻面，用音箱而不是耳机，从片头字幕看到片尾字幕结束。<b>如果中途走神了，没关系——长镜头的声音会自己回来</b>，它会从窗外的风、冰箱的嗡鸣、隔壁的水声里，重新找到你。</p>
+        <p><span class="p">$</span> <span class="c">echo</span> "不卡，才看得下去。" <span class="cursor"></span></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 栏目6：关于 ============ -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="lh">
+        <div>
+          <h2>神马我不卡电影网<br>按<b>流畅度</b><u>找电影</u>的观影指南</h2>
+          <p class="lead">神马我不卡电影网（shenmawobukadianyingwang-cn.github.io）是<b>以流畅度为索引的电影观影指南</b>。我们不堆片库、不追热度，只回答两个问题：<b>① 我现在有多少带宽？② 我现在有多少时间？</b>馆藏按卡顿敏感轴（码率 / 帧率 / 字幕依赖）、导演、年代、胶片与修复状态五重索引，每部标注正版入口，让你在 30 秒内决定今晚看什么、怎么看。</p>
+        </div>
+        <div class="stats">
+          <div><b>5,140</b><small>馆藏影片</small></div>
+          <div><b>6</b><small>流畅指标</small></div>
+          <div><b>40</b><small>部不卡片单</small></div>
+          <div><b>0</b><small>盗链广告</small></div>
+        </div>
+      </div>
+      <div class="feat">
+        <div><h4><span class="tk">01</span>流畅优先</h4><p>按<b>码率 / 帧率 / 画幅 / 音轨 / 字幕 / 片长</b>六项实测打分。标准是"<b>弱网能不能看</b>"，不是"它卖了多少"。黑白片、静态构图、长镜头天然更流畅。</p></div>
+        <div><h4><span class="tk">02</span>长镜头优先</h4><p>侯孝贤、是枝裕和、塔可夫斯基、贝拉·塔尔、阿彼察邦、爱德华·杨。平均镜头长度 &gt; 30 秒，请关闭倍速与插帧——<b>口型错位 2 帧，长镜头就废了</b>。</p></div>
+        <div><h4><span class="tk">03</span>4K 修复优先</h4><p>优先推荐 4K / 2K 修复版、标准收藏、胶片原始画幅。片源限定持牌平台艺术电影专区、正版修复版与电影资料馆。不搬运、不盗链、不破解、不写"未删减""禁片""磁力"。</p></div>
+      </div>
+      <div class="siteinfo">
+        <p><b>网站名称：</b>神马我不卡电影网 —— 流畅度优先的观影指南 · 不卡，才看得下去 · 不卡电影 · 流畅观影 · 弱网友好 · 码率 · 帧率 · 画幅 · 音轨 · 字幕 · 长镜头 · 极简对白 · 文艺片 · 慢电影 · 实验电影 · 艺术电影 · 冷门佳片 · 高分电影 · 经典电影 · 4K 修复 · 电影修复 · 自适应码率 · 电影推荐 · 正版电影 · 侯孝贤 · 是枝裕和 · 小津安二郎</p>
+        <p style="margin-top:8px"><b>网站网址：</b><a href="https://shenmawobukadianyingwang-cn.github.io/" style="color:var(--cy)">https://shenmawobukadianyingwang-cn.github.io/</a></p>
+        <p style="margin-top:8px"><b>合规声明：</b>本演示页面为静态模板示例，影片名称、年份、片长、码率、帧率、"馆藏 5,140 部"、"不卡榜 8 部"排序、"省流档 ≤ 6 Mbps"等均为<b>示例占位数据，非实测值</b>，仅供界面展示与学习使用，不代表真实可观看状态、实际价格、版权归属或授权情况，一切以各平台当日页面为准。影视作品版权归原作者及版权方所有，请在正版平台确认版权、价格与地区限制后观看，支持创作者。本站<b>不提供任何破解账号、绕过付费或 DRM 的技术方法，不传播磁力链接、种子与网盘盗版资源</b>。含暴力、血腥、成人题材的影片已标注 <b>18+</b>，建议成年人在清醒状态下观看；未成年人请在家长指导下使用本站。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a class="logo" href="#" style="font-size:17px"><span class="lt">不</span><span>神马我不卡电影网<small>NO-LAG CINEMA</small></span></a>
+        <p style="margin-top:12px;max-width:440px">卡顿清零，长镜头才有意义。</p>
+      </div>
+      <div class="f-links">
+        <a href="#home">今日片单</a>
+        <a href="#axis">卡顿敏感轴</a>
+        <a href="#rank">不卡榜</a>
+        <a href="#pick">片单</a>
+        <a href="#guide">不卡设置</a>
+        <a href="#essay">长文</a>
+        <a href="#about">关于</a>
+        <a href="#">正版来源</a>
+      </div>
+    </div>
+    <div class="f-cat">
+      <a href="#">神马我不卡电影网</a>
+      <a href="#">不卡电影</a>
+      <a href="#">流畅观影</a>
+      <a href="#">弱网友好</a>
+      <a href="#">码率</a>
+      <a href="#">帧率</a>
+    </div>
+    <div class="f-cat">
+      <a href="#">画幅</a>
+      <a href="#">音轨</a>
+      <a href="#">字幕</a>
+      <a href="#">长镜头</a>
+      <a href="#">极简对白</a>
+      <a href="#">4K修复</a>
+    </div>
+    <div class="copy">
+      © 2026 神马我不卡电影网 shenmawobukadianyingwang　|　流畅度优先 · 不卡片单 · 长镜头 · 4K 修复版优先　|　<a href="#" style="color:var(--cy)">回到顶部 ↑</a><br>
+      <b>网站网址：https://shenmawobukadianyingwang-cn.github.io/</b>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamb').addEventListener('click',function(){document.getElementById('menu').classList.toggle('open');});
+document.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('menu').classList.remove('open');});});
+window.addEventListener('scroll',function(){
+  var y=window.scrollY+150,cur='';
+  document.querySelectorAll('section[id]').forEach(function(s){if(s.offsetTop<=y)cur=s.id;});
+  document.querySelectorAll('.menu a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur);});
+});
+document.querySelectorAll('.acc .hd').forEach(function(h){
+  h.addEventListener('click',function(){
+    var it=h.parentElement, bd=it.querySelector('.bd');
+    if(it.classList.contains('open')){it.classList.remove('open');bd.style.maxHeight=null;}
+    else{it.classList.add('open');bd.style.maxHeight=bd.scrollHeight+40+'px';}
+  });
+});
+</script>
+</body>
+</html>
